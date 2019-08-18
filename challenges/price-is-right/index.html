@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        // var guessPrice=[];
+        function priceIsRight(correctPrice, guessPriceArray) {
+            var priceDifferenceArray = [];
+            for (var i = 0; i < guessPriceArray.length; i++) {
+                var guessPrice = guessPriceArray[i];
+                var priceDifference = guessPrice - correctPrice;
+                priceDifferenceArray.push(priceDifference);
+            }
+
+            var compareValue = Math.min.apply(Math,priceDifferenceArray);
+            var output = -1;
+
+            priceDifferenceArray.forEach(function (priceDifference, index) {
+                // console.log(priceDifference,index);
+                if (priceDifference <= 0 && priceDifference >= compareValue) {
+                    compareValue = priceDifference;
+                    output = index;
+                }
+                // console.log(compareValue,output);
+            })
+            
+            return output;
+
+        }
+
+        console.log(priceIsRight(20, [21, 32, 4, 12]));
+        console.log(priceIsRight(30, [36, 67, 90]));
+        console.log(priceIsRight(20, [21, 19, 32, 4, 12]));
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
