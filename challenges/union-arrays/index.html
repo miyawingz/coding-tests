@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        var array1 = [1, 2, 3, 4, 5, 3, 2, 4, 8];
+        var array2 = [4, 5, 6, 7, 8];
+        var array3 = [10, 11];
+        var array4 = [1, 0];
+        function union(array1, array2) {
+            var arrayUnion = [];
+
+            array1.forEach((value, index) => {
+                if (arrayUnion.indexOf(value) == -1) {
+                    arrayUnion.push(value);
+                }
+            })
+
+            array2.forEach((value, index) => {
+                if (arrayUnion.indexOf(value) == -1) {
+                    arrayUnion.push(value);
+                }
+            })
+            return arrayUnion;
+        }
+
+        function unionUnlimited(...arrays) {
+            var arrayUnion = [];
+            for (var i = 0; i < arrays.length; i++) {
+                // console.log(params[i]);
+                arrays[i].forEach((value, index) => {
+                    if (arrayUnion.indexOf(value) == -1) {
+                        arrayUnion.push(value);
+                    }
+                })
+            }
+
+            //diff style
+
+            arrays.forEach((array) => {
+                array.forEach((value) => {
+                    if (arrayUnion.indexOf(value) == -1) {
+                        arrayUnion.push(value);
+                    }
+                })
+            })
+
+            return arrayUnion;
+        }
+
+        console.log(union(array1, array2));
+        console.log(unionUnlimited(array1, array2, array3, array4))
+    </script>
+</head>
+
+</html>

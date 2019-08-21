@@ -3,7 +3,6 @@
 
 <head>
     <script>
-        // var guessPrice=[];
         function priceIsRight(correctPrice, guessPriceArray) {
             var priceDifferenceArray = [];
             for (var i = 0; i < guessPriceArray.length; i++) {
@@ -12,7 +11,13 @@
                 priceDifferenceArray.push(priceDifference);
             }
 
-            var compareValue = Math.min.apply(Math,priceDifferenceArray);
+            console.log(priceDifferenceArray);
+
+            priceDifferenceArray = guessPriceArray.map((value, index) => {
+                return value - correctPrice;
+            })
+
+            var compareValue = Math.min.apply(Math, priceDifferenceArray);
             var output = -1;
 
             priceDifferenceArray.forEach(function (priceDifference, index) {
@@ -23,7 +28,31 @@
                 }
                 // console.log(compareValue,output);
             })
-            
+
+            return output;
+
+        }
+
+        function priceIsRightImprove(correctPrice, guessPriceArray) {
+
+            var priceDifferenceArray = guessPriceArray.map((value, index) => {
+                return value - correctPrice;
+            })
+
+            console.log(priceDifferenceArray);
+
+            var compareValue = Math.min.apply(Math, priceDifferenceArray);
+            var output = -1;
+
+            priceDifferenceArray.forEach((priceDifference, index) => {
+                // console.log(priceDifference,index);
+                if (priceDifference <= 0 && priceDifference >= compareValue) {
+                    compareValue = priceDifference;
+                    output = index;
+                }
+                // console.log(compareValue,output);
+            })
+
             return output;
 
         }
@@ -32,6 +61,9 @@
         console.log(priceIsRight(30, [36, 67, 90]));
         console.log(priceIsRight(20, [21, 19, 32, 4, 12]));
 
+        console.log(priceIsRightImprove(20, [21, 32, 4, 12]));
+        console.log(priceIsRightImprove(30, [36, 67, 90]));
+        console.log(priceIsRightImprove(20, [21, 19, 32, 4, 12]));
     </script>
 </head>
 
