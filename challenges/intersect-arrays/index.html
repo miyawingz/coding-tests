@@ -6,16 +6,65 @@
         var arr1 = [1, 2, 3, 4, 5, 6];
         var arr2 = [4, 5, 6, 7, 8];
         function intersectArray(array1, array2) {
-            var intersectArray = []
+            var intersectArray = array1.map((value) => {
+                return value;
+            })
 
-            // for (i = 0; i < params.length; i++) {
-            //     params[i].forEach((value,index)=>{
 
-            //     })
+            // var outputArray = [];
+            intersectArray.forEach((value, index) => {
+                // console.log(index, value);
+                if (array2.indexOf(value) !== -1) {
+                    intersectArray.push(value);
+                }
+            })
 
-            // }
+            intersectArray.splice(0, array1.length);
             return intersectArray;
         }
+
+        function intersectArray2(array1, array2) {
+            var baseArray = array1.map((value) => {
+                return value;
+            })
+
+
+            var outputArray = [];
+            baseArray.forEach((value, index) => {
+                // console.log(index, value);
+                if (array2.indexOf(value) !== -1) {
+                    outputArray.push(value);
+                }
+            })
+
+            return outputArray;
+        }
+
+        function intersectArrayUnlimited(...arrays) {
+            var intersectArray = arrays[0].map((value) => {
+                return value;
+            })
+
+            arrays.forEach((array)=>{
+                var length = intersectArray.length;
+                intersectArray.forEach((value)=>{
+                    if (array.indexOf(value) !== -1){
+                        intersectArray.push(value)
+                    }
+                })
+                intersectArray.splice(0,length)
+            })
+
+            return intersectArray;
+        }
+
+
+        console.log(intersectArray(arr1, arr2))
+        console.log(intersectArray2(arr1, arr2))
+        console.log(intersectArrayUnlimited(arr1, [0,2,4],[4,5],[4,3,5]))
+
+
+
     </script>
 </head>
 
