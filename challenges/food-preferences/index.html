@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        var lunchMenuPairs = [
+            ["Curry", "Indian"],
+            ["Noodles", "Japanese"]
+        ];
+
+        var teamCuisinePreference = [
+            ["John", "Indian"],
+            ["Tim", "*"]
+        ];
+
+        function possibleCombo(teamPreference, menu) {
+            var output = []
+            teamCuisinePreference.forEach(memberPreference => {
+                var memberMeunArray = []
+                var memberName = memberPreference[0];
+                var preference = memberPreference[1];
+                var matchedMenu = [];
+                for (var i = 0; i < menu.length; i++) {
+                    if (preference == menu[i][1] || preference == "*") {
+                        matchedItem = menu[i][0];
+                        matchedMenu.push(matchedItem);
+                    }
+                }
+                memberMeunArray.push(memberName);
+                memberMeunArray.push(matchedMenu);
+                output.push(memberMeunArray);
+            })
+            return output;
+        }
+
+        console.log(possibleCombo(teamCuisinePreference, lunchMenuPairs));
+
+
+    </script>
+</head>
+
+</html>

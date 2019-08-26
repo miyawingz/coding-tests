@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        /*
+        # First Unique Character In String
+
+Challenge:
+Given a string, s, find the first character in string that does not repeat.
+
+Requirements:\
+[x] Assume all strings are lowercase only.\
+[x] If all letters repeat, return some dummy character like '_'.
+
+Examples:
+* abracadabra => c
+* abdcrab => d
+*/
+
+        function firstUniqueChar(str) {
+            var output = "_";
+            str = str.toLowerCase();
+            for (var i = 0; i < str.length; i++) {
+                var letter = str.charAt(i);
+                if (str.indexOf(letter) !== -1) {
+                    if (str.indexOf(letter) == str.lastIndexOf(letter)) {
+                        output = letter;
+                        break;
+                    }
+                }
+            }
+            return output;
+        }
+
+        function firstUniqueChar2(str) {
+            var output = "_";
+            str = str.toLowerCase();
+            var countArray = [];
+            for (var i = 0; i < str.length; i++) {
+                var char = str.charAt(i);
+                var count = 0
+                for (var x = 0; x < str.length; x++) {
+                    if (char == str.charAt(x)) {
+                        count += 1;
+                    };
+                }
+                countArray.push(count);
+            }
+
+            if (countArray.indexOf(1) !== -1) {
+                output = str.charAt(countArray.indexOf(1));
+            }
+
+            return output;
+        }
+        console.log(firstUniqueChar2("abracadabra"));
+        console.log(firstUniqueChar2("abdcrab"));
+        console.log(firstUniqueChar2("aabbcc"));
+
+
+
+    </script>
+</head>
+
+</html>

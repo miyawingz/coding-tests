@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function fibonacci(sequence) {
+            var output = [1, 1]
+            if (sequence > 2) {
+                for (var i = 2; i < sequence; i++) {
+                    var num = output[i - 1] + output[i - 2];
+                    output.push(num);
+                }
+            }
+            return output;
+
+        }
+
+        console.log(fibonacci(6));
+    </script>
+</head>
+
+</html>
